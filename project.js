@@ -70,6 +70,19 @@ function flipCards() {
   playerCardSlot.appendChild(playerCard.getHTML())
   computerCardSlot.appendChild(computerCard.getHTML())
 
+  function updateDeckCount() {
+    computerDeckElement.innerText = computerDeck.numberOfCards
+    playerDeckElement.innerText = playerDeck.numberOfCards
+  }
+  
+  function isRoundWinner(cardOne, cardTwo) {
+    return CARD_VALUE_MAP[cardOne.value] > CARD_VALUE_MAP[cardTwo.value]
+  }
+  
+  function isGameOver(deck) {
+    return deck.numberOfCards === 0
+  }
+
   updateDeckCount()
 
   if (isRoundWinner(playerCard, computerCard)) {
@@ -93,17 +106,4 @@ function flipCards() {
     text.innerText = "You Win!! The Galaxy is saved!!"
     stop = true
   }
-}
-
-function updateDeckCount() {
-  computerDeckElement.innerText = computerDeck.numberOfCards
-  playerDeckElement.innerText = playerDeck.numberOfCards
-}
-
-function isRoundWinner(cardOne, cardTwo) {
-  return CARD_VALUE_MAP[cardOne.value] > CARD_VALUE_MAP[cardTwo.value]
-}
-
-function isGameOver(deck) {
-  return deck.numberOfCards === 0
 }
